@@ -49,7 +49,9 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        //
+        //Find category and delete
+        Category::find($id)->delete();
+        return response()->json(array('msg' => 'deleted'));
     }
 
     private function rules(){

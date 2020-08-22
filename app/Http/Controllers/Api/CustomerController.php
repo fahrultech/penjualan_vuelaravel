@@ -33,22 +33,38 @@ class CustomerController extends Controller
         $customer->province_id  = $request->province_id;
         $customer->province_name  = $request->province_name;
         $customer->save();
-
     }
 
     public function show($id)
     {
         //
+        $customer = Customer::find($id);
+        return response()->json($customer);
     }
 
     public function update(Request $request, $id)
     {
         //
+        //Validate input request
+        $this->validate($request, $this->rules(), $this->messages());
+
+        // Insert new customer to database
+        $customer = Customer::find($id);
+        $customer->customer_name  = $request->name;
+        $customer->address  = $request->address;
+        $customer->phone  = $request->phone;
+        $customer->city_id  = $request->city_id;
+        $customer->city_name  = $request->city_name;
+        $customer->province_id  = $request->province_id;
+        $customer->province_name  = $request->province_name;
+        $customer->save();
     }
 
     public function destroy($id)
     {
         //
+        Customer::find($id)->delete();
+        return response()->json(array('msg' => 'deleted'));
     }
 
     private function rules(){
