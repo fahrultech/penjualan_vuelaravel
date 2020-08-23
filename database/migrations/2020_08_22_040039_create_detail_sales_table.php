@@ -19,6 +19,7 @@ class CreateDetailSalesTable extends Migration
             $table->unsigned('price');
             $table->integer('quantity');
             $table->integer('discount');
+            $table->integer('total');
             $table->timestamps();
         });
     }

@@ -15,7 +15,9 @@ class CreateHeaderPurchasingsTable extends Migration
     {
         Schema::create('header_purchasings', function (Blueprint $table) {
             $table->id();
-
+            $table->integer('supplier_id');
+            $table->integer('shipping_fee');
+            $table->integer('total');
             $table->timestamps();
         });
     }
